@@ -18,11 +18,14 @@ class Studentmodel {
   @HiveField(3)
   final String adress;
 
+ @HiveField(4)
+ int? id;
   Studentmodel(
       {required this.name,
       required this.age,
       required this.phone,
-      required this.adress
+      required this.adress,
+      this.id
       });
   
 }

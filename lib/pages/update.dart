@@ -12,7 +12,25 @@ import 'package:image_picker/image_picker.dart';
 //  import 'package:image_picker/image_picker.dart';
 
 class UpdateStudent extends StatefulWidget {
-  UpdateStudent({super.key});
+  final String name;
+  final String age;
+  final String phone;
+  final String adress;
+  final dynamic image;
+  // final Studentmodel data;
+  final int index;
+
+  UpdateStudent({
+    super.key,
+    required this.name,
+    required this.age,
+    required this.phone,
+    required this.adress,
+    //  required this.data,
+    required this.image,
+    required this.index,
+    //  required this.image
+  });
 
   @override
   State<UpdateStudent> createState() => _UpdateStudentState();
@@ -27,8 +45,18 @@ class _UpdateStudentState extends State<UpdateStudent> {
   // final ImagePicker _picker = ImagePicker();
   File? selectedimage;
 
-  final _formkey = GlobalKey<FormState>();
+  // final _formkey = GlobalKey<FormState>();
   @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController(text: widget.name);
+    _ageController = TextEditingController(text: widget.age);
+    _phoneController = TextEditingController(text: widget.phone);
+    _addressController = TextEditingController(text: widget.adress);
+
+    // selectedimage = widget. image!= null ? File(widget.image) : null;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -107,7 +135,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
                   ),
                   errorStyle: TextStyle(color: Colors.red),
                   filled: true,
-                  fillColor: Colors.white, // Input field background color
+                  fillColor: Colors.white, // Input   field background color
                 ),
                 keyboardType: TextInputType.phone,
                 validator: (value) {
@@ -144,10 +172,8 @@ class _UpdateStudentState extends State<UpdateStudent> {
               SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  
-                  onStudentButtonClick();
-
-                  Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Liststudent())));
+                  update();
+                  // Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Liststudent())));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue, // Button color
@@ -213,7 +239,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
             children: [
               FloatingActionButton(
                 onPressed: () {
-                  fromcam();
+                  photocamera();
                 },
                 child: Icon(Icons.camera),
                 tooltip: 'Open Camera',
@@ -223,7 +249,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                 fromgallery();
+                  photogallery();
                 },
                 child: Icon(Icons.image),
                 tooltip: 'Open Gallery',
@@ -234,7 +260,38 @@ class _UpdateStudentState extends State<UpdateStudent> {
       ),
     );
   }
-  fromgallery() async {
+
+  Future<void> update() async {
+    final edited_name = _nameController.text.trim();
+    final edited_age = _ageController.text.trim();
+    final edited_phone = _phoneController.text.trim();
+    final edited_address = _addressController.text.trim();
+    final edited_image = selectedimage?.path;
+
+    // final edited_image = selectedimage?.path;
+
+    if (edited_name.isEmpty ||
+        edited_age.isEmpty ||
+        edited_phone.isEmpty ||
+        edited_address.isEmpty ||
+        edited_image == null) {
+      return;
+    } else {
+      final updated = Studentmodel(
+        name: edited_name,
+        age: edited_age,
+        phone: edited_phone,
+        adress: edited_address,
+
+        
+      );
+      editList(widget.index, updated);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (ctx) => Liststudent()));
+    }
+  }
+
+  photogallery() async {
     final returnedimage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -243,27 +300,11 @@ class _UpdateStudentState extends State<UpdateStudent> {
     });
   }
 
-  fromcam() async {
+  photocamera() async {
     final returnedimage =
         await ImagePicker().pickImage(source: ImageSource.camera);
     setState(() {
       selectedimage = File(returnedimage!.path);
     });
   }
-  Future<void>onStudentButtonClick()async{
-    final _name =_nameController.text.trim();
-    final _age = _ageController.text.trim();
-    final _phone = _phoneController.text.trim();
-    final _address = _addressController.text.trim();
-  if(_name.isEmpty||_age.isEmpty||_phone.isEmpty||_address.isEmpty){
-    return;
-  }
-  print('$_name $_age $_phone $_address');
-
-    final _student=Studentmodel(name: _name, age: _age, phone: _phone, adress: _address);
-   
-    insertStudent(_student);
-  }
-  
-  }
-
+}

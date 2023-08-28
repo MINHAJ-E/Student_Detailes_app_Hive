@@ -1,17 +1,20 @@
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter_hive_project_3/functions/db_functions.dart';
 import 'package:flutter_hive_project_3/model/model.dart';
 import 'package:flutter_hive_project_3/pages/add_student.dart';
 import 'package:flutter_hive_project_3/pages/update.dart';
+import 'package:flutter_hive_project_3/pages/user_profile.dart';
 
 class Liststudent extends StatelessWidget {
-  Liststudent({super.key});
+   Liststudent({super.key});
 
   @override
   Widget build(BuildContext context) {
     getAllStudents();
 
     return Scaffold(
+      
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: Text('Student List'),
@@ -24,7 +27,7 @@ class Liststudent extends StatelessWidget {
           return ListView.builder(
             itemCount: studentList.length,
             itemBuilder: (BuildContext context, int index) {
-              final student = studentList[index];
+              final data = studentList[index];
 
               return Card(
                 shape: RoundedRectangleBorder(
@@ -32,7 +35,14 @@ class Liststudent extends StatelessWidget {
                 elevation: 20,
                 child: ListTile(
                   onTap: () {
-                    // userprofile(context, data);
+                    Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>userProfileView(
+                      name: data.name,
+                      age: data.age,
+                      phone: data.phone,
+                      adress: data.adress,
+                      
+                    )));
+                    
                   },
                   leading: CircleAvatar(
                     radius: 30,
@@ -42,9 +52,10 @@ class Liststudent extends StatelessWidget {
                     // : AssetImage('assets/images/profile.png')
                     // as ImageProvider
                   ),
-                  title: Text(student.name),
-                  subtitle: Text(student.age),
+                  title: Text(data.name),
+                  subtitle: Text(data.age),
                   trailing: Row(
+                    
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
@@ -55,7 +66,15 @@ class Liststudent extends StatelessWidget {
                         color: Colors.red),
                       ),
                       IconButton(onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>UpdateStudent()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> UpdateStudent(
+                          name: data.name,
+                           age: data.age,
+                            phone:data.phone,
+                             adress: data.adress,
+                             index: index,
+                            //  data:data ,
+                             image: Image,
+                        )));
                       }, icon: Icon(Icons.edit)),
                     ],
                   ),
@@ -69,6 +88,7 @@ class Liststudent extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => Addstudent(),
+            
           ));
         },
         backgroundColor: Colors.amber,

@@ -21,6 +21,7 @@ getAllStudents() async {
   studentListNotifier.notifyListeners();
 }
 
+
 void deletestudent(int id) async {
   final studentdb = await Hive.openBox<Studentmodel>('student_db');
   await studentdb.deleteAt(id);

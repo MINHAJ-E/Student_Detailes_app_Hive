@@ -25,7 +25,7 @@ class Studentmodel {
       required this.age,
       required this.phone,
       required this.adress,
-      this.id
+      // this.id
       });
   
 }

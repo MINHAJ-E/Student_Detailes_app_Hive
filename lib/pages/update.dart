@@ -16,7 +16,7 @@ class UpdateStudent extends StatefulWidget {
   final String age;
   final String phone;
   final String adress;
-  final dynamic image;
+  // final dynamic image;
   // final Studentmodel data;
   final int index;
 
@@ -25,10 +25,11 @@ class UpdateStudent extends StatefulWidget {
     required this.name,
     required this.age,
     required this.phone,
-    required this.adress,
+    required this.adress, 
+     required this.index,
     //  required this.data,
-    required this.image,
-    required this.index,
+    // required this.image,
+    // required this.index,
     //  required this.image
   });
 
@@ -59,135 +60,137 @@ class _UpdateStudentState extends State<UpdateStudent> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        title: Text('EDIT detailes'),
+      ),
       body: SingleChildScrollView(
-          child: SafeArea(
-        child: Container(
-          color: Colors.grey[200], // Overall background color
-          padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              imageprofile(),
-              SizedBox(
-                height: 40,
-              ),
-              TextFormField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input field background color
+          child: Container(
+            color:Color.fromARGB(255, 38, 40, 41), // Overall background color
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                imageprofile(),
+                SizedBox(
+                  height: 30,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Name is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                controller: _ageController,
-                decoration: InputDecoration(
-                  labelText: 'Age',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.calendar_today),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                TextFormField(
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                    hintText: 'Name',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.person),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor: Colors.amber, // Input field background color
                   ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input field background color
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Name is required';
+                    }
+                    return null;
+                  },
                 ),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Age is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                controller: _phoneController,
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.phone),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: _ageController,
+                  decoration: InputDecoration(
+                    hintText: 'Age',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.calendar_today),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor: Colors.amber, // Input field background color
                   ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input   field background color
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Age is required';
+                    }
+                    return null;
+                  },
                 ),
-                keyboardType: TextInputType.phone,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Phone number is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                controller: _addressController,
-                decoration: InputDecoration(
-                  labelText: 'Address',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.home),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: _phoneController,
+                  decoration: InputDecoration(
+                    hintText: 'Phone Number',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.phone),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor: Colors.amber, // Input   field background color
                   ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
+                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Phone number is required';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: _addressController,
+                  decoration: InputDecoration(
+                    hintText: 'Address',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.home),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor: Colors.amber, // Input field background color
                   ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input field background color
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Address is required';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Address is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () {
-                  update();
-                  // Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Liststudent())));
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Button color
-                  onPrimary: Colors.white, // Text color
+                SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () {
+                    update();
+                    // Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Liststudent())));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.amber, // Button color
+                    onPrimary: Colors.black, // Text color
+                  ),
+                  child: Text('Update'),
                 ),
-                child: Text('Update'),
-              ),
-              SizedBox(
-                height: 40,
-              )
-            ],
-          ),
-        ),
-      )),
+                SizedBox(
+                  height: 40,
+                )
+              ],
+            ),
+          )),
     );
   }
 
@@ -239,7 +242,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
             children: [
               FloatingActionButton(
                 onPressed: () {
-                  photocamera();
+                  fromcamera();
                 },
                 child: Icon(Icons.camera),
                 tooltip: 'Open Camera',
@@ -249,7 +252,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  photogallery();
+                 fromgallery();
                 },
                 child: Icon(Icons.image),
                 tooltip: 'Open Gallery',
@@ -260,38 +263,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
       ),
     );
   }
-
-  Future<void> update() async {
-    final edited_name = _nameController.text.trim();
-    final edited_age = _ageController.text.trim();
-    final edited_phone = _phoneController.text.trim();
-    final edited_address = _addressController.text.trim();
-    final edited_image = selectedimage?.path;
-
-    // final edited_image = selectedimage?.path;
-
-    if (edited_name.isEmpty ||
-        edited_age.isEmpty ||
-        edited_phone.isEmpty ||
-        edited_address.isEmpty ||
-        edited_image == null) {
-      return;
-    } else {
-      final updated = Studentmodel(
-        name: edited_name,
-        age: edited_age,
-        phone: edited_phone,
-        adress: edited_address,
-
-        
-      );
-      editList(widget.index, updated);
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (ctx) => Liststudent()));
-    }
-  }
-
-  photogallery() async {
+   fromgallery() async {
     final returnedimage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -300,11 +272,44 @@ class _UpdateStudentState extends State<UpdateStudent> {
     });
   }
 
-  photocamera() async {
+  fromcamera() async {
     final returnedimage =
         await ImagePicker().pickImage(source: ImageSource.camera);
     setState(() {
       selectedimage = File(returnedimage!.path);
     });
   }
+
+  Future<void> update() async {
+    final edited_name = _nameController.text.trim();
+    final edited_age = _ageController.text.trim();
+    final edited_phone = _phoneController.text.trim();
+    final edited_address = _addressController.text.trim();
+    // final edited_image = selectedimage?.path;
+
+    // final edited_image = selectedimage?.path;
+
+    if (edited_name.isEmpty ||
+        edited_age.isEmpty ||
+        edited_phone.isEmpty ||
+        edited_address.isEmpty 
+        // edited_image == null
+       
+        ) {
+      return;
+    } else {
+      final updated = Studentmodel(
+        name: edited_name,
+        age: edited_age,
+        phone: edited_phone,
+        adress: edited_address,  );
+
+        
+    
+      editList(widget.index, updated);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (ctx) => Liststudent()));
+    }
+  }
+
 }

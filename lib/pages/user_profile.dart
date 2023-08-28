@@ -22,11 +22,11 @@ class userProfileView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white10,
       appBar: AppBar(
-        // elevation: 0,
+        // elevation: 20,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(15)),
         ),
-        backgroundColor:Colors.amber,
+        backgroundColor: Colors.amber,
         title: Text('PROFILE'),
       ),
       body: Container(
@@ -39,8 +39,7 @@ class userProfileView extends StatelessWidget {
               height: 160,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color:Colors.amber,
-               
+                color: Colors.amber,
               ),
               child: const CircleAvatar(
                 radius: 80,
@@ -52,23 +51,18 @@ class userProfileView extends StatelessWidget {
             CardItem(
               title: 'Name',
               content: name,
-              isAlternate: false,
-             
             ),
             CardItem(
               title: 'Age',
               content: age,
-              isAlternate: true,
             ),
             CardItem(
               title: 'Place',
               content: phone,
-              isAlternate: false,
             ),
             CardItem(
               title: 'Phone',
               content: adress,
-              isAlternate: true,
             ),
           ],
         ),
@@ -80,24 +74,19 @@ class userProfileView extends StatelessWidget {
 class CardItem extends StatelessWidget {
   final String title;
   final String content;
-  final bool isAlternate;
 
   const CardItem({
     required this.title,
     required this.content,
-    required this.isAlternate,
   });
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = isAlternate ? Colors.amber : Colors.amber;
-    // final textColor =
-        // isAlternate ? Color.fromARGB(255, 247, 230, 2) : Colors.white;
-      
+    final bgColor = Colors.amber;
+
     return Card(
-      elevation: 5,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(5),
       ),
       color: bgColor,
       child: Container(
@@ -112,14 +101,16 @@ class CardItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
-                // color: textColor,
+               
               ),
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 10),
             Text(
               content,
               style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold,),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),

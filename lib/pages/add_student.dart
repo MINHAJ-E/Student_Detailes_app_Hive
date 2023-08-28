@@ -29,141 +29,144 @@ class _AddstudentState extends State<Addstudent> {
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(appBar: AppBar(
+      backgroundColor: Colors.amber,
+      title: Text('ADD student detailes'),
+    ),
       body: SingleChildScrollView(
-          child: SafeArea(
-        child: Container(
-          color: Colors.grey[200], // Overall background color
-          padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              imageprofile(),
-              SizedBox(
-                height: 40,
-              ),
-              TextFormField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input field background color
+          child: Container(
+            color:  Color.fromARGB(255, 38, 40, 41),// Overall background color
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                imageprofile(),
+                SizedBox(
+                  height: 30,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Name is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                controller: _ageController,
-                decoration: InputDecoration(
-                  labelText: 'Age',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.calendar_today),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                TextFormField(
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                    
+                    hintText: 'Name',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.person),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor:  Colors.amber, // Input field background color
                   ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input field background color
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Name is required';
+                    }
+                    return null;
+                  },
                 ),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Age is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                controller: _phoneController,
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.phone),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: _ageController,
+                  decoration: InputDecoration(
+                    hintText: 'Age',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.calendar_today),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor: Colors.amber, // Input field background color
                   ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input field background color
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Age is required';
+                    }
+                    return null;
+                  },
                 ),
-                keyboardType: TextInputType.phone,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Phone number is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                controller: _addressController,
-                decoration: InputDecoration(
-                  labelText: 'Address',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.home),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: _phoneController,
+                  decoration: InputDecoration(
+                    hintText: 'Phone Number',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.phone),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor: Colors.amber, // Input field background color
                   ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  errorStyle: TextStyle(color: Colors.red),
-                  filled: true,
-                  fillColor: Colors.white, // Input field background color
+                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Phone number is required';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Address is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () {
-                  // if (_formkey.currentState!.validate()) {
-                  //   // onStudentButtonClick();
-                  //   Navigator.of(context).pop();
-                  // } else {}
-                  onStudentButtonClick();
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: _addressController,
+                  decoration: InputDecoration(
+                    hintText: 'Address',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.home),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                    errorStyle: TextStyle(color: Colors.red),
+                    filled: true,
+                    fillColor: Colors.amber, // Input field background color
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Address is required';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () {
+                    // if (_formkey.currentState!.validate()) {
+                    //   // onStudentButtonClick();
+                    //   Navigator.of(context).pop();
+                    // } else {}
+                    onStudentButtonClick();
 
-                  Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Liststudent())));
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Button color
-                  onPrimary: Colors.white, // Text color
+                    Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Liststudent())));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.amber, // Button color
+                    onPrimary: Colors.black, // Text color
+                  ),
+                  child: Text('Submit'),
                 ),
-                child: Text('Submit'),
-              ),
-              SizedBox(
-                height: 40,
-              )
-            ],
-          ),
-        ),
-      )),
+                SizedBox(
+                  height: 30,
+                )
+              ],
+            ),
+          )),
     );
   }
 
